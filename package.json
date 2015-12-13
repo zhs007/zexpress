@@ -1,0 +1,47 @@
+{
+  "name": "zexpress",
+  "version": "0.1.0",
+  "latest": "0.1.0",
+  "description": "zexpress",
+  "keywords": [
+    "zexpress",
+    "express",
+    "template",
+    "generator"
+  ],
+  "preferGlobal": true,
+  "config": {
+    "publishtest": false
+  },
+  "homepage": "http://www.heysdk.com/",
+  "author": {
+    "name": "zhs007",
+    "email": "sssxueren@gmail.com",
+    "url": "http://www.heysdk.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhs007/zexpress"
+  },
+  "bugs": {
+    "url": "https://github.com/zhs007/zexpress/issues",
+    "email": "sssxueren@gmail.com"
+  },
+  "directories": {
+    "bin": "./bin"
+  },
+  "main": "./bin/zexpress.js",
+  "bin": {
+    "oss-cli": "./bin/zexpress.js"
+  },
+  "scripts": {
+    "start": "node ./bin/zexpress.js"
+  },
+  "dependencies": {
+    "shelljs": "*",
+    "yargs": "*",
+    "zhandlebars": "*"
+  },
+  "license": "MIT",
+  "readmeFilename": "README.md"
+}
