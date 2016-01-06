@@ -1,0 +1,31 @@
+@startuml
+
+class Request {
+	allparams
+	session
+}
+
+class Response {
+	ResponseResult resret
+}
+
+class ResponseResult {
+	redirect
+	jade
+	json
+}
+
+Response *-- ResponseResult
+
+CtrlMgr *-- CtrlGroup
+
+Router <|-- CtrlRouter
+Router <|-- ModuleRouter
+
+CtrlRouter *-- CtrlGroup
+CtrlGroup *-- BaseCtrl
+
+ModuleMgr *-- Module
+ModuleRouter *-- ModuleMgr
+
+@enduml
