@@ -4,10 +4,38 @@
   {"name": "{{projname_lc}}/src", "src": "", "type": "dir"},
   {"name": "{{projname_lc}}/lib", "src": "", "type": "dir"},
   {"name": "{{projname_lc}}/ctrl", "src": "", "type": "dir"},
+  {{#each router_ctrl}}
+  {"name": "{{../projname_lc}}/ctrl/{{name_lc}}", "src": "", "type": "dir"},
+  {"name": "{{../projname_lc}}/ctrl/{{name_lc}}.js", "src": "/main/ctrl/ctrl.js", "type": "file", "jscode": "params.curctrlrouter = params.router_ctrl[{{@index}}]; params.curctrlrouterindex = {{@index}}"},
+  {{#each lstctrl}}
+  {"name": "{{../../projname_lc}}/ctrl/{{../name_lc}}/{{name_lc}}.js", "src": "/main/ctrl/ctrl/ctrl.js", "type": "file", "jscode": "params.curctrl = params.curctrlrouter.lstctrl[{{@index}}]"},
+  {{/each}}
+  {{/each}}
+  {"name": "{{projname_lc}}/views", "src": "", "type": "dir"},
+  {{#each router_simple}}
+  {"name": "{{../projname_lc}}/views/{{name}}", "src": "", "type": "dir"},
+  {{/each}}
+  {{#each router_module}}
+  {"name": "{{../projname_lc}}/views/{{name}}", "src": "", "type": "dir"},
+  {{/each}}
+  {"name": "{{projname_lc}}/mod", "src": "", "type": "dir"},
+  {{#each router_module}}
+  {"name": "{{../projname_lc}}/mod/{{name}}", "src": "", "type": "dir"},
+  {{/each}}  
+  {"name": "{{projname_lc}}/public", "src": "", "type": "dir"},
+  {"name": "{{projname_lc}}/public/assets", "src": "", "type": "dir"},
+  {"name": "{{projname_lc}}/public/assets/flash", "src": "", "type": "dir"},
+  {"name": "{{projname_lc}}/public/css", "src": "", "type": "dir"},
+  {"name": "{{projname_lc}}/public/img", "src": "", "type": "dir"},
+  {"name": "{{projname_lc}}/public/js", "src": "", "type": "dir"},
   {"name": "{{projname_lc}}/bin/{{projname_lc}}.js", "src": "/main/bin/main.js", "type": "file"},
+  {"name": "{{projname_lc}}/app.js", "src": "/main/app.js", "type": "file"},
   {"name": "{{projname_lc}}/config.js", "src": "/main/config.js", "type": "file"},
   {"name": "{{projname_lc}}/package.json", "src": "/main/package.json", "type": "file"},
   {"name": "{{projname_lc}}/lib/*.js", "src": "/main/lib/*.js", "type": "file"},
   {"name": "{{projname_lc}}/src/*.js", "src": "/main/src/*.js", "type": "file"},
-  {"name": "{{projname_lc}}/ctrl/*.js", "src": "/main/ctrl/*.js", "type": "file"}
+  {"name": "{{projname_lc}}/public/assets/flash/*.swf", "src": "/main/public/assets/flash/*.swf", "type": "binfile"},
+  {"name": "{{projname_lc}}/public/css/*.css", "src": "/main/public/css/*.css", "type": "file"},
+  {"name": "{{projname_lc}}/public/js/*.js", "src": "/main/public/js/*.js", "type": "file"},
+  {"name": "{{projname_lc}}/public/js/*.map", "src": "/main/public/js/*.map", "type": "binfile"}
 ]
