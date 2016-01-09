@@ -7,33 +7,28 @@ var bodyParser = require('body-parser');
 
 var sessionmgr = require('./lib/sessionmgr');
 var resresulte = require('./lib/resresult');
-
-var routes = require('./routes/index');
-var login = require('./routes/login');
-var main = require('./routes/main');
-var ctrl = require('./routes/ctrl');
+var routermgr = require('./lib/routermgr');
 
 var app = express();
+
+routermgr.singleton.setApp(app);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser('ergiyhe84356afhi'));
 app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(sessionmgr.funcMain);
 app.use(resresulte.funcMain);
-//app.use(slotssession.funcMain);
 
-app.use('/', routes);
-app.use('/login', login);
-app.use('/main', main);
-app.use('/ctrl', ctrl);
+var router = require('./src/router');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

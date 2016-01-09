@@ -17,7 +17,10 @@ exports.logdev_path = util.format('./%s.dev.log', timestamp);
 
 exports.openLogDev = true;
 
-exports.db_host = 'db host';
-exports.db_user = 'db user';
-exports.db_pwd = 'db password';
-exports.db_name = 'db name';
+{{#each dbmgr}}
+exports.{{@key}}_host = '{{host}}';
+exports.{{@key}}_user = '{{user}}';
+exports.{{@key}}_pwd = '{{password}}';
+exports.{{@key}}_name = '{{database}}';
+
+{{/each}}

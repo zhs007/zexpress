@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-"use strict";
+//"use strict";
 
 var fs = require('fs');
 var process = require('process');
@@ -53,22 +53,24 @@ var argv = require('yargs')
     //    describe: 'cdn url',
     //    type: 'string'
     //})
-    .usage('Usage: zexpress proj-name')
-    .example('zexpress proj-name', 'zexpress proj-name')
+    .usage('Usage: zexpress jsfile')
+    .example('zexpress jsfile', 'zexpress jsfile')
     .help('h')
     .alias('h', 'help')
     .epilog('copyright 2015')
     .argv;
 
-let basearr = argv._;
+var basearr = argv._;
 if (basearr == undefined || basearr.length < 1) {
-    console.log('Usage: zexpress proj-name');
+    console.log('Usage: zexpress jsfile');
 
     process.exit(1);
 }
 
-let params = {projname: basearr[0]};
-proj.procProj(params);
+var buf = fs.readFileSync(basearr[0], 'utf-8');
+eval(buf);
+
+proj.procProj(projparam);
 
 //if (!basecmd.checkParams(argv, 'id', 'key', 'bucket', 'endpoint')) {
 //    process.exit(1);

@@ -17,6 +17,7 @@
     "mysql": "*",
     "winston": "*",
     "jadecache": "*",
+    "moment": "*",
     "zmysql": "*"
   }
 }

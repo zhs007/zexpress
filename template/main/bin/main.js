@@ -1,16 +1,19 @@
 #!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
 "use strict";
+
+require('../src/session');
 
 var config = require('../config');
 var dbmgr = require('../lib/dbmgr');
 var sessionmgr = require('../lib/sessionmgr');
-var session = require('../src/session');
 
 var app = require('../app');
 var debug = require('debug')('{{projname_lc}}:server');
 var http = require('http');
-
-sessionmgr.setSessionType(session.Session);
 
 /**
  * Get port from environment and store in Express.
@@ -29,11 +32,18 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-dbmgr.newDBClient('{{projname_lc}}', config.db_host, config.db_user, config.db_pwd, config.db_name, function () {
-  server.listen(port);
-  server.on('error', onError);
-  server.on('listening', onListening);
+
+{{#each dbmgr}}
+dbmgr.newDBClient('{{@key}}', config.{{@key}}_host, config.{{@key}}_user, config.{{@key}}_pwd, config.{{@key}}_name, function () {
+{{/each}}
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+
+{{#each dbmgr}}
 });
+{{/each}}
 
 /**
  * Normalize a port into a number, string, or false.
@@ -65,8 +75,8 @@ function onError(error) {
   }
 
   var bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+      ? 'Pipe ' + port
+      : 'Port ' + port;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
@@ -90,7 +100,7 @@ function onError(error) {
 function onListening() {
   var addr = server.address();
   var bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
+      ? 'pipe ' + addr
+      : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
