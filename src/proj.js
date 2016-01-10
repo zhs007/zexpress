@@ -1,6 +1,7 @@
 "use strict";
 
 var path = require('path');
+var util = require('util');
 var zhandlebars = require('zhandlebars');
 
 function procParams(params) {
@@ -10,22 +11,37 @@ function procParams(params) {
     let arrmod_ctrl = [];
     let arrmod_module = [];
     for (let ii = 0; ii < params.router.length; ++ii) {
-        params.router[ii].name_lc = params.router[ii].name.toLowerCase();
+        let currouter = params.router[ii];
+        currouter.name_lc = currouter.name.toLowerCase();
+        currouter.name_uc = currouter.name.toUpperCase();
 
-        if (params.router[ii].type == 'simple') {
-            arrmod_simple.push(params.router[ii]);
+        if (util.isArray(currouter.url)) {
+            currouter.urlstr = JSON.stringify(currouter.url);
         }
-        else if (params.router[ii].type == 'ctrl') {
-            let curctrl = params.router[ii];
-            arrmod_ctrl.push(curctrl);
+        else {
+            currouter.urlstr = util.format("'%s'", currouter.url);
+        }
 
-            for (let jj = 0; jj < curctrl.lstctrl.length; ++jj) {
-                curctrl.lstctrl[jj].name_uc = curctrl.lstctrl[jj].name.toUpperCase();
-                curctrl.lstctrl[jj].name_lc = curctrl.lstctrl[jj].name.toLowerCase();
+        //console.log(currouter.urlstr);
+
+        if (currouter.type == 'simple') {
+            arrmod_simple.push(currouter);
+        }
+        else if (currouter.type == 'ctrl') {
+            arrmod_ctrl.push(currouter);
+
+            for (let jj = 0; jj < currouter.lstctrl.length; ++jj) {
+                currouter.lstctrl[jj].name_uc = currouter.lstctrl[jj].name.toUpperCase();
+                currouter.lstctrl[jj].name_lc = currouter.lstctrl[jj].name.toLowerCase();
             }
         }
         else if (params.router[ii].type == 'module') {
-            arrmod_module.push(params.router[ii]);
+            arrmod_module.push(currouter);
+
+            for (let jj = 0; jj < currouter.lstmodule.length; ++jj) {
+                currouter.lstmodule[jj].name_uc = currouter.lstmodule[jj].name.toUpperCase();
+                currouter.lstmodule[jj].name_lc = currouter.lstmodule[jj].name.toLowerCase();
+            }
         }
     }
 

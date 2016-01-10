@@ -6,7 +6,7 @@
   {"name": "{{projname_lc}}/ctrl", "src": "", "type": "dir"},
   {{#each router_ctrl}}
   {"name": "{{../projname_lc}}/ctrl/{{name_lc}}", "src": "", "type": "dir"},
-  {"name": "{{../projname_lc}}/ctrl/{{name_lc}}.js", "src": "/main/ctrl/ctrl.js", "type": "file", "jscode": "params.curctrlrouter = params.router_ctrl[{{@index}}]; params.curctrlrouterindex = {{@index}}"},
+  {"name": "{{../projname_lc}}/ctrl/{{name_lc}}.js", "src": "/main/ctrl/ctrl.js", "type": "file", "jscode": "params.curctrlrouter = params.router_ctrl[{{@index}}]"},
   {{#each lstctrl}}
   {"name": "{{../../projname_lc}}/ctrl/{{../name_lc}}/{{name_lc}}.js", "src": "/main/ctrl/ctrl/ctrl.js", "type": "file", "jscode": "params.curctrl = params.curctrlrouter.lstctrl[{{@index}}]"},
   {{/each}}
@@ -20,8 +20,21 @@
   {{/each}}
   {"name": "{{projname_lc}}/mod", "src": "", "type": "dir"},
   {{#each router_module}}
-  {"name": "{{../projname_lc}}/mod/{{name}}", "src": "", "type": "dir"},
-  {{/each}}  
+  {"name": "{{../projname_lc}}/mod/{{name}}", "src": "", "type": "dir", "jscode": "params.curmodrouter = params.router_module[{{@index}}]"},
+  {{#each lstmodule}}
+  {"name": "{{../../projname_lc}}/mod/{{../name_lc}}/{{name_lc}}.js", "src": "/main/mod/mod/mod.js", "type": "file", "jscode": "params.curmod = params.curmodrouter.lstmodule[{{@index}}]"},
+  {{/each}}
+  {{/each}}
+  {"name": "{{projname_lc}}/routes", "src": "", "type": "dir"},
+  {{#each router_simple}}
+  {"name": "{{../projname_lc}}/routes/{{name_lc}}.js", "src": "/main/routes/simple.js", "type": "file", "jscode": "params.currouter = params.router_simple[{{@index}}]"},
+  {{/each}}
+  {{#each router_module}}
+  {"name": "{{../projname_lc}}/routes/{{name_lc}}.js", "src": "/main/routes/module.js", "type": "file", "jscode": "params.currouter = params.router_module[{{@index}}]"},
+  {{/each}}
+  {{#each router_ctrl}}
+  {"name": "{{../projname_lc}}/routes/{{name_lc}}.js", "src": "/main/routes/ctrl.js", "type": "file", "jscode": "params.currouter = params.router_ctrl[{{@index}}]"},
+  {{/each}}    
   {"name": "{{projname_lc}}/public", "src": "", "type": "dir"},
   {"name": "{{projname_lc}}/public/assets", "src": "", "type": "dir"},
   {"name": "{{projname_lc}}/public/assets/flash", "src": "", "type": "dir"},

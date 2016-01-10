@@ -2,12 +2,12 @@
 
 var modulemgr = require('../../lib/modulemgr');
 //<--require Begin
-var childmgr = require('../../base/childmgr');
+
 //<--require End
 
-const MODULENAME = 'edtchild';
+const MODULENAME = '{{curmod.name_lc}}';
 
-class Module_EdtChild extends modulemgr.Module{
+class Module_{{curmod.name}} extends modulemgr.Module{
     constructor() {
         super(MODULENAME);
 
@@ -18,26 +18,15 @@ class Module_EdtChild extends modulemgr.Module{
 
     isNeedProc(req) {
 //<--isNeedProc Begin
-        return req.allparams.leftmenu == 'edtchild';
+        return false;
 //<--isNeedProc End
     }
 
     onProc(req, res, next) {
 //<--onProc Begin
-        childmgr.getChild(function (lstchild) {
-            let curpid = parseInt(req.allparams.pid);
-            for (let ii = 0; ii < lstchild.length; ++ii) {
-                if (lstchild[ii].pid == curpid) {
-                    res.resret.param.curchild = lstchild[ii];
-                }
-            }
-
-            res.resret.render(res);
-
-            next();
-        });
+        next();
 //<--onProc End
     }
 };
 
-exports.Module_EdtChild = Module_EdtChild;
+exports.Module_{{curmod.name}} = Module_{{curmod.name}};
