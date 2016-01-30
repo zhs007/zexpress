@@ -12,8 +12,8 @@ exports.ver = pkg.version;
 exports.service_port = {{port}};
 exports.appname = '{{title}}';
 
-exports.log_path = util.format('./%s.log', timestamp);
-exports.logdev_path = util.format('./%s.dev.log', timestamp);
+//exports.log_path = util.format('./%s.log', timestamp);
+//exports.logdev_path = util.format('./%s.dev.log', timestamp);
 
 exports.openLogDev = true;
 
