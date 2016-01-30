@@ -13,14 +13,14 @@
   {{/each}}
   {"name": "{{projname_lc}}/views", "src": "", "type": "dir"},
   {{#each router_simple}}
-  {"name": "{{../projname_lc}}/views/{{name}}", "src": "", "type": "dir"},
+  {"name": "{{../projname_lc}}/views/{{name_lc}}", "src": "", "type": "dir"},
   {{/each}}
   {{#each router_module}}
-  {"name": "{{../projname_lc}}/views/{{name}}", "src": "", "type": "dir"},
+  {"name": "{{../projname_lc}}/views/{{name_lc}}", "src": "", "type": "dir"},
   {{/each}}
   {"name": "{{projname_lc}}/mod", "src": "", "type": "dir"},
   {{#each router_module}}
-  {"name": "{{../projname_lc}}/mod/{{name}}", "src": "", "type": "dir", "jscode": "params.curmodrouter = params.router_module[{{@index}}]"},
+  {"name": "{{../projname_lc}}/mod/{{name_lc}}", "src": "", "type": "dir", "jscode": "params.curmodrouter = params.router_module[{{@index}}]"},
   {{#each lstmodule}}
   {"name": "{{../../projname_lc}}/mod/{{../name_lc}}/{{name_lc}}.js", "src": "/main/mod/mod/mod.js", "type": "file", "jscode": "params.curmod = params.curmodrouter.lstmodule[{{@index}}]"},
   {{/each}}

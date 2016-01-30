@@ -9,7 +9,7 @@ var timestamp = Date.now();
 
 exports.ver = pkg.version;
 
-exports.service_port = 3600;
+exports.service_port = {{port}};
 exports.appname = '{{title}}';
 
 exports.log_path = util.format('./%s.log', timestamp);
