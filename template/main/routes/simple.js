@@ -1,5 +1,6 @@
 "use strict";
 
+var config = require('../config');
 var routermgr = require('../lib/routermgr');
 //<--require Begin
 

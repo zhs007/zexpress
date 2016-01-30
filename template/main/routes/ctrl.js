@@ -1,5 +1,6 @@
 "use strict";
 
+var config = require('../config');
 var routermgr = require('../lib/routermgr');
 var {{currouter.name_lc}} = require('../ctrl/{{currouter.name_lc}}');
 {{#each currouter.lstctrl}}
@@ -14,7 +15,7 @@ const URL = '/:ctrlid/';
 
 class Router_{{currouter.name}} extends routermgr.CtrlRouter{
     constructor() {
-        super(mainctrl.CTRL_GROUPID, URLROOT, URL);
+        super({{currouter.name_lc}}.CTRL_GROUPID, URLROOT, URL);
 //<--constructor Begin
 
 //<--constructor End

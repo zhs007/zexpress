@@ -1,5 +1,6 @@
 "use strict";
 
+var config = require('../config');
 var routermgr = require('../lib/routermgr');
 {{#each currouter.lstmodule}}
 require('../mod/{{../currouter.name_lc}}/{{name_lc}}');
