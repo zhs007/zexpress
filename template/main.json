@@ -12,11 +12,14 @@
   {{/each}}
   {{/each}}
   {"name": "{{projname_lc}}/views", "src": "", "type": "dir"},
+  {"name": "{{projname_lc}}/views/error.jade", "src": "/main/views/error.jade", "type": "file"},
   {{#each router_simple}}
   {"name": "{{../projname_lc}}/views/{{name_lc}}", "src": "", "type": "dir"},
+  {"name": "{{../projname_lc}}/views/{{name_lc}}/main.jade", "src": "/main/views/routes.jade", "type": "file", "jscode": "params.currouter = params.router_simple[{{@index}}]"},
   {{/each}}
   {{#each router_module}}
   {"name": "{{../projname_lc}}/views/{{name_lc}}", "src": "", "type": "dir"},
+  {"name": "{{../projname_lc}}/views/{{name_lc}}/main.jade", "src": "/main/views/routes.jade", "type": "file", "jscode": "params.currouter = params.router_module[{{@index}}]"},
   {{/each}}
   {"name": "{{projname_lc}}/mod", "src": "", "type": "dir"},
   {{#each router_module}}

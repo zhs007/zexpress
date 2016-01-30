@@ -3,7 +3,7 @@
 function procSession(req, res) {
     let session = req.session;
 
-    if (session.admininfo == undefined) {
+    if (!session.isAlreadyLogin()) {
         if (req.originalUrl != '/login') {
             res.resret.redirect('/login');
             res.resret.render(res);
