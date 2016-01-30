@@ -6,37 +6,37 @@
   {"name": "{{projname_lc}}/ctrl", "src": "", "type": "dir"},
   {{#each router_ctrl}}
   {"name": "{{../projname_lc}}/ctrl/{{name_lc}}", "src": "", "type": "dir"},
-  {"name": "{{../projname_lc}}/ctrl/{{name_lc}}.js", "src": "/main/ctrl/ctrl.js", "type": "file", "jscode": "params.curctrlrouter = params.router_ctrl[{{@index}}]"},
+  {"name": "{{../projname_lc}}/ctrl/{{name_lc}}.js", "src": "/main/ctrl/ctrl.js", "type": "file", "overwrite": "rw", "jscode": "params.curctrlrouter = params.router_ctrl[{{@index}}]"},
   {{#each lstctrl}}
-  {"name": "{{../../projname_lc}}/ctrl/{{../name_lc}}/{{name_lc}}.js", "src": "/main/ctrl/ctrl/ctrl.js", "type": "file", "jscode": "params.curctrl = params.curctrlrouter.lstctrl[{{@index}}]"},
+  {"name": "{{../../projname_lc}}/ctrl/{{../name_lc}}/{{name_lc}}.js", "src": "/main/ctrl/ctrl/ctrl.js", "type": "file", "overwrite": "rw", "jscode": "params.curctrl = params.curctrlrouter.lstctrl[{{@index}}]"},
   {{/each}}
   {{/each}}
   {"name": "{{projname_lc}}/views", "src": "", "type": "dir"},
-  {"name": "{{projname_lc}}/views/error.jade", "src": "/main/views/error.jade", "type": "file"},
+  {"name": "{{projname_lc}}/views/error.jade", "src": "/main/views/error.jade", "type": "file", "overwrite": "r"},
   {{#each router_simple}}
   {"name": "{{../projname_lc}}/views/{{name_lc}}", "src": "", "type": "dir"},
-  {"name": "{{../projname_lc}}/views/{{name_lc}}/main.jade", "src": "/main/views/routes.jade", "type": "file", "jscode": "params.currouter = params.router_simple[{{@index}}]"},
+  {"name": "{{../projname_lc}}/views/{{name_lc}}/main.jade", "src": "/main/views/routes.jade", "type": "file", "overwrite": "r", "jscode": "params.currouter = params.router_simple[{{@index}}]"},
   {{/each}}
   {{#each router_module}}
   {"name": "{{../projname_lc}}/views/{{name_lc}}", "src": "", "type": "dir"},
-  {"name": "{{../projname_lc}}/views/{{name_lc}}/main.jade", "src": "/main/views/routes.jade", "type": "file", "jscode": "params.currouter = params.router_module[{{@index}}]"},
+  {"name": "{{../projname_lc}}/views/{{name_lc}}/main.jade", "src": "/main/views/routes.jade", "type": "file", "overwrite": "r", "jscode": "params.currouter = params.router_module[{{@index}}]"},
   {{/each}}
   {"name": "{{projname_lc}}/mod", "src": "", "type": "dir"},
   {{#each router_module}}
   {"name": "{{../projname_lc}}/mod/{{name_lc}}", "src": "", "type": "dir", "jscode": "params.curmodrouter = params.router_module[{{@index}}]"},
   {{#each lstmodule}}
-  {"name": "{{../../projname_lc}}/mod/{{../name_lc}}/{{name_lc}}.js", "src": "/main/mod/mod/mod.js", "type": "file", "jscode": "params.curmod = params.curmodrouter.lstmodule[{{@index}}]"},
+  {"name": "{{../../projname_lc}}/mod/{{../name_lc}}/{{name_lc}}.js", "src": "/main/mod/mod/mod.js", "type": "file", "overwrite": "rw", "jscode": "params.curmod = params.curmodrouter.lstmodule[{{@index}}]"},
   {{/each}}
   {{/each}}
   {"name": "{{projname_lc}}/routes", "src": "", "type": "dir"},
   {{#each router_simple}}
-  {"name": "{{../projname_lc}}/routes/{{name_lc}}.js", "src": "/main/routes/simple.js", "type": "file", "jscode": "params.currouter = params.router_simple[{{@index}}]"},
+  {"name": "{{../projname_lc}}/routes/{{name_lc}}.js", "src": "/main/routes/simple.js", "type": "file", "overwrite": "rw", "jscode": "params.currouter = params.router_simple[{{@index}}]"},
   {{/each}}
   {{#each router_module}}
-  {"name": "{{../projname_lc}}/routes/{{name_lc}}.js", "src": "/main/routes/module.js", "type": "file", "jscode": "params.currouter = params.router_module[{{@index}}]"},
+  {"name": "{{../projname_lc}}/routes/{{name_lc}}.js", "src": "/main/routes/module.js", "type": "file", "overwrite": "rw", "jscode": "params.currouter = params.router_module[{{@index}}]"},
   {{/each}}
   {{#each router_ctrl}}
-  {"name": "{{../projname_lc}}/routes/{{name_lc}}.js", "src": "/main/routes/ctrl.js", "type": "file", "jscode": "params.currouter = params.router_ctrl[{{@index}}]"},
+  {"name": "{{../projname_lc}}/routes/{{name_lc}}.js", "src": "/main/routes/ctrl.js", "type": "file", "overwrite": "rw", "jscode": "params.currouter = params.router_ctrl[{{@index}}]"},
   {{/each}}    
   {"name": "{{projname_lc}}/public", "src": "", "type": "dir"},
   {"name": "{{projname_lc}}/public/assets", "src": "", "type": "dir"},
@@ -44,14 +44,14 @@
   {"name": "{{projname_lc}}/public/css", "src": "", "type": "dir"},
   {"name": "{{projname_lc}}/public/img", "src": "", "type": "dir"},
   {"name": "{{projname_lc}}/public/js", "src": "", "type": "dir"},
-  {"name": "{{projname_lc}}/bin/{{projname_lc}}.js", "src": "/main/bin/main.js", "type": "file"},
-  {"name": "{{projname_lc}}/app.js", "src": "/main/app.js", "type": "file"},
-  {"name": "{{projname_lc}}/config.js", "src": "/main/config.js", "type": "file"},
-  {"name": "{{projname_lc}}/package.json", "src": "/main/package.json", "type": "file"},
-  {"name": "{{projname_lc}}/lib/*.js", "src": "/main/lib/*.js", "type": "file"},
-  {"name": "{{projname_lc}}/src/*.js", "src": "/main/src/*.js", "type": "file"},
-  {"name": "{{projname_lc}}/public/assets/flash/*.swf", "src": "/main/public/assets/flash/*.swf", "type": "binfile"},
-  {"name": "{{projname_lc}}/public/css/*.css", "src": "/main/public/css/*.css", "type": "file"},
-  {"name": "{{projname_lc}}/public/js/*.js", "src": "/main/public/js/*.js", "type": "file"},
-  {"name": "{{projname_lc}}/public/js/*.map", "src": "/main/public/js/*.map", "type": "binfile"}
+  {"name": "{{projname_lc}}/bin/{{projname_lc}}.js", "src": "/main/bin/main.js", "type": "file", "overwrite": "r"},
+  {"name": "{{projname_lc}}/app.js", "src": "/main/app.js", "type": "file", "overwrite": "r"},
+  {"name": "{{projname_lc}}/config.js", "src": "/main/config.js", "type": "file", "overwrite": "r"},
+  {"name": "{{projname_lc}}/package.json", "src": "/main/package.json", "type": "file", "overwrite": "r"},
+  {"name": "{{projname_lc}}/lib/*.js", "src": "/main/lib/*.js", "type": "file", "overwrite": "w"},
+  {"name": "{{projname_lc}}/src/*.js", "src": "/main/src/*.js", "type": "file", "overwrite": "r"},
+  {"name": "{{projname_lc}}/public/assets/flash/*.swf", "src": "/main/public/assets/flash/*.swf", "type": "binfile", "overwrite": "r"},
+  {"name": "{{projname_lc}}/public/css/*.css", "src": "/main/public/css/*.css", "type": "file", "overwrite": "r"},
+  {"name": "{{projname_lc}}/public/js/*.js", "src": "/main/public/js/*.js", "type": "file", "overwrite": "r"},
+  {"name": "{{projname_lc}}/public/js/*.map", "src": "/main/public/js/*.map", "type": "binfile", "overwrite": "r"}
 ]
